@@ -1,0 +1,45 @@
+<!--
+ - Created by Olya on 15.07.2021.
+ -->
+
+<!-- Currency Convertor -->
+<template>
+    <lightning-card title="Currency Converter">
+        <template if:true={result}>
+            <div class="slds-m-around_medium">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-combobox
+                                name="firstCurrency"
+                                options={options}
+                                value={firstCurrency}
+                                onchange={firstCurrencyChange}>
+                        </lightning-combobox>
+                        <lightning-input type="number" name="firstNumber" label="Your Number" value={firstValue}
+                                         onchange={firstValueChange}></lightning-input>
+                    </div>
+
+                    <div class="slds-col">
+                        <lightning-combobox
+                                name="secondCurrency"
+                                options={options}
+                                value={secondCurrency}
+                                onchange={secondCurrencyChange}>
+                        </lightning-combobox>
+                        <lightning-input type="number" name="secondNumber" label="Your Number" value={secondValue}
+                                         onchange={secondValueChange}></lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="currencies slds-m-around_medium">
+                <template for:each={options} for:item="option">
+                    <div key={option.value} class="slds-col">
+                        {option.label}: {option.value}
+                    </div>
+                </template>
+            </div>
+
+        </template>
+    </lightning-card>
+</template>
